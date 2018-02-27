@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gameLength_array">
+        <item>Best of 3 sets</item>
+        <item>Best of 5 sets</item>
+    </string-array>
+</resources>

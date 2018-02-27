@@ -1,0 +1,83 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TableTheme">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@color/white_background</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SetPtsTableTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@color/white_background</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/clear_score</item>
+    </style>
+
+    <style name="PtsTableTheme">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@color/white_background</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/clear_score</item>
+    </style>
+
+    <style name="FaultTableTheme">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@color/white_background</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/clear_score</item>
+    </style>
+
+    <style name="PlayerNameTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
+        <item name="android:background">@color/white_background</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="ButtonTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="SecondaryButtonTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">45dp</item>
+    </style>
+</resources>
