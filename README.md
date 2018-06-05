@@ -1,3 +1,3 @@
-# Tennis_Score_Keeper
+# Tennis Score Keeper
 
-Users can input player names and keep track of match scoring.
+This app allows users to input their player names and keep track of points being scored in a tennis match.
