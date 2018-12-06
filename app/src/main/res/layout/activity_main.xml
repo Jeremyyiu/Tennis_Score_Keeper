@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tennis_background"
     android:scaleType="center">
 
     <LinearLayout
@@ -11,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="12dp"
+        android:background="#5678e687"
         tools:context="com.example.jeremy.tennisscorekeeperapp.MainActivity">
 
         <LinearLayout
@@ -22,8 +22,8 @@
                 android:id="@+id/ScoreBoard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
                 android:gravity="center_horizontal"
                 android:stretchColumns="*">
 
@@ -32,7 +32,7 @@
                     <TextView
                         android:id="@+id/playersHeader"
                         style="@style/TableTheme"
-                        android:text="Players" />
+                        android:text="@string/players" />
 
                     <TextView
                         android:id="@+id/set1header"
@@ -163,8 +163,8 @@
                     android:id="@+id/player1_points"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@color/white_background"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center_horizontal"
@@ -216,8 +216,8 @@
                     android:id="@+id/player2_points"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@color/white_background"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center_horizontal"

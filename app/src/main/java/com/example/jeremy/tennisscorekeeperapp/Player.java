@@ -39,7 +39,9 @@ public class Player {
         return name;
     }
 
-    public void resetName() { name = ""; }
+    public void resetName() {
+        name = "";
+    }
 
     /* Points */
     public Point getPoints() {
@@ -50,7 +52,9 @@ public class Player {
         points = score;
     }
 
-    public void resetPoints() { points = Point.point_0; }
+    public void resetPoints() {
+        points = Point.point_0;
+    }
 
     /* Tiebreaker Points */
     public int getTieBreakerPoints() {
@@ -97,7 +101,9 @@ public class Player {
         return sets;
     }
 
-    public void winSet() { sets++; }
+    public void winSet() {
+        sets++;
+    }
 
     public void resetSetCounter() {
         sets = 0;

@@ -25,6 +25,7 @@ import static com.example.jeremy.tennisscorekeeperapp.StartActivity.GAME_PREFERE
 public class MainActivity extends AppCompatActivity {
     public static final String FAULT = "Fault";
     public static final String DOUBLE_FAULT = "Double Fault";
+
     private Player player1;
     private Player player2;
 
@@ -447,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void playerForfeit(final Player player, View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(player.getName() + ", is forfeiting the match")
+        builder.setMessage(player.getName() + " is forfeiting the match")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -634,28 +635,41 @@ public class MainActivity extends AppCompatActivity {
     public void matchComplete(Player winner) {
         Toast toast = Toast.makeText(getApplicationContext(), winner.getName() + " has won!!", Toast.LENGTH_SHORT);
         toast.show();
+        disableGameplayButtons();
 
-        //Disable all gameplay buttons.
+    }
+
+    /**
+     * Disables all gameplay buttons once the match ends
+     */
+    private void disableGameplayButtons() {
         Button player1_pointWinBtn = (Button) findViewById(R.id.player1_pointWin);
-        player1_pointWinBtn.setEnabled(false);
-        player1_pointWinBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+        buttonDisable(player1_pointWinBtn);
+
         Button player2_pointWinBtn = (Button) findViewById(R.id.player2_pointWin);
-        player2_pointWinBtn.setEnabled(false);
-        player2_pointWinBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+        buttonDisable(player2_pointWinBtn);
 
         Button player1_faultBtn = (Button) findViewById(R.id.player1_fault);
-        player1_faultBtn.setEnabled(false);
-        player1_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+        buttonDisable(player1_faultBtn);
+
         Button player2_faultBtn = (Button) findViewById(R.id.player2_fault);
-        player2_faultBtn.setEnabled(false);
-        player2_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+        buttonDisable(player2_faultBtn);
 
         Button player1_forfeitBtn = (Button) findViewById(R.id.player1_forfeit);
-        player1_forfeitBtn.setEnabled(false);
-        player1_forfeitBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+        buttonDisable(player1_forfeitBtn);
+
         Button player2_forfeitBtn = (Button) findViewById(R.id.player2_forfeit);
-        player2_forfeitBtn.setEnabled(false);
-        player2_forfeitBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+        buttonDisable(player2_forfeitBtn);
+    }
+
+    /**
+     * Disables selected button to be unclickable.
+     *
+     * @param button Button that is to be disabled.
+     */
+    private void buttonDisable(Button button) {
+        button.setEnabled(false);
+        button.setBackgroundColor(getResources().getColor(R.color.color_grey));
     }
 
     @Override
