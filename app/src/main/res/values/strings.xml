@@ -20,4 +20,5 @@
     <string name="set5">Set5</string>
     <string name="pts">Pts</string>
     <string name="players">Players</string>
+    <string name="match_format">Match Format</string>
 </resources>
