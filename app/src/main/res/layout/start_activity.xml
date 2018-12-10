@@ -20,9 +20,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
                 android:text="@string/game_setup"
@@ -52,9 +52,9 @@
                 android:id="@+id/player2name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:hint="@string/player2_name"
                 android:inputType="textCapSentences"
@@ -81,6 +81,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:onClick="startBtnClick"
+                android:padding="10dp"
                 android:text="@string/start_game" />
         </LinearLayout>
     </LinearLayout>

@@ -253,19 +253,16 @@
             <Button
                 android:id="@+id/undo_action"
                 style="@style/SecondaryButtonTheme"
-                android:layout_marginHorizontal="10dp"
                 android:text="@string/undo" />
 
             <Button
                 android:id="@+id/remake_game"
                 style="@style/SecondaryButtonTheme"
-                android:layout_marginHorizontal="10dp"
                 android:text="@string/remake_game" />
 
             <Button
                 android:id="@+id/reset_game"
                 style="@style/SecondaryButtonTheme"
-                android:layout_marginHorizontal="10dp"
                 android:text="@string/reset_game" />
         </LinearLayout>
     </LinearLayout>
