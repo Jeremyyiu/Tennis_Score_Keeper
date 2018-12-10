@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleType="center">
+    android:background="#a84a78e6"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="12dp"
-        android:background="#5678e687"
         tools:context="com.example.jeremy.tennisscorekeeperapp.MainActivity">
 
         <LinearLayout
@@ -176,14 +177,12 @@
                     android:id="@+id/player1_fault"
                     style="@style/ButtonTheme"
                     android:background="#dae75d2b"
-                    android:onClick="player1Fault"
                     android:text="@string/fault" />
 
                 <Button
                     android:id="@+id/player1_pointWin"
                     style="@style/ButtonTheme"
                     android:background="#eb1a65cf"
-                    android:onClick="player1PointWin"
                     android:text="@string/point_win" />
 
 
@@ -191,7 +190,6 @@
                     android:id="@+id/player1_forfeit"
                     style="@style/ButtonTheme"
                     android:background="#e9cf2929"
-                    android:onClick="playerOneForfeit"
                     android:text="@string/forfeit" />
             </LinearLayout>
 
@@ -229,14 +227,12 @@
                     android:id="@+id/player2_fault"
                     style="@style/ButtonTheme"
                     android:background="#dae75d2b"
-                    android:onClick="player2Fault"
                     android:text="@string/fault" />
 
                 <Button
                     android:id="@+id/player2_pointWin"
                     style="@style/ButtonTheme"
                     android:background="#eb1260cf"
-                    android:onClick="player2PointWin"
                     android:text="@string/point_win" />
 
 
@@ -244,7 +240,6 @@
                     android:id="@+id/player2_forfeit"
                     style="@style/ButtonTheme"
                     android:background="#e9cf2929"
-                    android:onClick="playerTwoForfeit"
                     android:text="@string/forfeit" />
             </LinearLayout>
         </LinearLayout>
@@ -252,25 +247,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="45dp"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/undo_action"
                 style="@style/SecondaryButtonTheme"
-                android:onClick="undoAction"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/undo" />
 
             <Button
                 android:id="@+id/remake_game"
                 style="@style/SecondaryButtonTheme"
-                android:onClick="remakeGame"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/remake_game" />
 
             <Button
                 android:id="@+id/reset_game"
                 style="@style/SecondaryButtonTheme"
-                android:onClick="resetGame"
+                android:layout_marginHorizontal="10dp"
                 android:text="@string/reset_game" />
         </LinearLayout>
     </LinearLayout>

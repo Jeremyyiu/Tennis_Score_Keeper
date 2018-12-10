@@ -11,18 +11,30 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StartActivity extends AppCompatActivity {
 
     public static final String GAME_PREFERENCES = "GamePrefs";
     public static final int BEST_OF_3_SETS = 3;
     public static final int BEST_OF_5_SETS = 5;
 
+    @BindView(R.id.gameLength_spinner)
+    Spinner spinner;
+
+    @BindView(R.id.player1name)
+    EditText player1Name;
+
+    @BindView(R.id.player2name)
+    EditText player2Name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity);
+        ButterKnife.bind(this);
 
-        Spinner spinner = (Spinner) findViewById(R.id.gameLength_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.gameLength_array, android.R.layout.simple_spinner_item);
@@ -40,9 +52,6 @@ public class StartActivity extends AppCompatActivity {
     public void startBtnClick(View view) {
         SharedPreferences settings = this.getSharedPreferences(GAME_PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
-
-        EditText player1Name = (EditText) findViewById(R.id.player1name);
-        EditText player2Name = (EditText) findViewById(R.id.player2name);
 
         /* Checks if the given player names are not empty and the same */
         if (!player1Name.getText().toString().equals("") && player1Name.getText().toString().equals(player2Name.getText().toString())) {
@@ -83,11 +92,9 @@ public class StartActivity extends AppCompatActivity {
      * @return match length as integer
      */
     public int getMatchLength() {
-        Spinner mySpinner = (Spinner) findViewById(R.id.gameLength_spinner);
-
-        if (mySpinner.getSelectedItem().toString().contains("3")) {
+        if (spinner.getSelectedItem().toString().contains("3")) {
             return BEST_OF_3_SETS; //if user selected best of 3 sets, the function returns the constant containing the value "3".
-        } else if (mySpinner.getSelectedItem().toString().contains("5")) {
+        } else if (spinner.getSelectedItem().toString().contains("5")) {
             return BEST_OF_5_SETS; //if user selected best of 5 sets, the function returns the constant containing the value "5".
         }
         return BEST_OF_3_SETS; //returns BEST_OF_3_SETS if nothing was selected.

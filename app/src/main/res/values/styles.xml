@@ -79,5 +79,7 @@
         <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-medium</item>
         <item name="android:layout_weight">1</item>
         <item name="android:minHeight">45dp</item>
+        <item name="android:background">#d3de3a2b</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 </resources>

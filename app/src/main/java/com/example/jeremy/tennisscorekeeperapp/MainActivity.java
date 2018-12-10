@@ -14,6 +14,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 import static com.example.jeremy.tennisscorekeeperapp.StartActivity.BEST_OF_3_SETS;
 import static com.example.jeremy.tennisscorekeeperapp.StartActivity.BEST_OF_5_SETS;
 import static com.example.jeremy.tennisscorekeeperapp.StartActivity.GAME_PREFERENCES;
@@ -40,10 +44,87 @@ public class MainActivity extends AppCompatActivity {
     private int player1Set5Counter = 0;
     private int player2Set5Counter = 0;
 
+    @BindView(R.id.player1_name)
+    TextView player1Name;
+    @BindView(R.id.player2_name)
+    TextView player2Name;
+
+    @BindView(R.id.p1Fault)
+    TextView p1Fault;
+    @BindView(R.id.p2Fault)
+    TextView p2Fault;
+
+    @BindView(R.id.p1)
+    TextView p1;
+    @BindView(R.id.p2)
+    TextView p2;
+
+    @BindView(R.id.set1header)
+    TextView set1header;
+    @BindView(R.id.p1Set1Points)
+    TextView p1Set1Points;
+    @BindView(R.id.p2Set1Points)
+    TextView p2Set1Points;
+
+    @BindView(R.id.set2header)
+    TextView set2header;
+    @BindView(R.id.p1Set2Points)
+    TextView p1Set2Points;
+    @BindView(R.id.p2Set2Points)
+    TextView p2Set2Points;
+
+    @BindView(R.id.set3header)
+    TextView set3header;
+    @BindView(R.id.p1Set3Points)
+    TextView p1Set3Points;
+    @BindView(R.id.p2Set3Points)
+    TextView p2Set3Points;
+
+
+    @BindView(R.id.set4header)
+    TextView set4header;
+    @BindView(R.id.p1Set4Points)
+    TextView p1Set4Points;
+    @BindView(R.id.p2Set4Points)
+    TextView p2Set4Points;
+
+    @BindView(R.id.set5header)
+    TextView set5header;
+    @BindView(R.id.p1Set5Points)
+    TextView p1Set5Points;
+    @BindView(R.id.p2Set5Points)
+    TextView p2Set5Points;
+
+    @BindView(R.id.player1_fault)
+    Button player1_faultBtn;
+    @BindView(R.id.player2_fault)
+    Button player2_faultBtn;
+
+    @BindView(R.id.player1_points)
+    TextView player1Points_view;
+    @BindView(R.id.player2_points)
+    TextView player2Points_view;
+    @BindView(R.id.p1Points)
+    TextView p1Points_View;
+    @BindView(R.id.p2Points)
+    TextView p2Points_View;
+
+    @BindView(R.id.player1_pointWin)
+    Button player1_pointWinBtn;
+    @BindView(R.id.player2_pointWin)
+    Button player2_pointWinBtn;
+
+    @BindView(R.id.player1_forfeit)
+    Button player1_forfeitBtn;
+    @BindView(R.id.player2_forfeit)
+    Button player2_forfeitBtn;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         setupGame(); //sets player names and current set.
         firstServer(); //user selects first user
@@ -55,44 +136,30 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setupGame() {
         SharedPreferences settings = getApplicationContext().getSharedPreferences(GAME_PREFERENCES, MODE_PRIVATE);
-        TextView player1Name = (TextView) findViewById(R.id.player1_name);
-        TextView player2Name = (TextView) findViewById(R.id.player2_name);
-        TextView p1Fault = (TextView) findViewById(R.id.p1Fault);
-        TextView p2Fault = (TextView) findViewById(R.id.p2Fault);
-        TextView p1 = (TextView) findViewById(R.id.p1);
-        TextView p2 = (TextView) findViewById(R.id.p2);
         player1Set1Counter = player2Set1Counter = player1Set2Counter = player2Set2Counter = player1Set3Counter = player2Set3Counter = player1Set4Counter = player2Set4Counter = player1Set5Counter = player2Set5Counter = 0;
 
         p1Fault.setVisibility(View.INVISIBLE);
         p2Fault.setVisibility(View.INVISIBLE);
 
-        TextView set2h = (TextView) findViewById(R.id.set2header);
-        set2h.setVisibility(View.GONE);
-        TextView p1Set2 = (TextView) findViewById(R.id.p1Set2Points);
-        p1Set2.setVisibility(View.GONE);
-        TextView p2Set2 = (TextView) findViewById(R.id.p2Set2Points);
-        p2Set2.setVisibility(View.GONE);
+        //Do not show Set 2 boxes for now
+        set2header.setVisibility(View.GONE);
+        p1Set2Points.setVisibility(View.GONE);
+        p2Set2Points.setVisibility(View.GONE);
 
-        TextView set3h = (TextView) findViewById(R.id.set3header);
-        set3h.setVisibility(View.GONE);
-        TextView p1Set3 = (TextView) findViewById(R.id.p1Set3Points);
-        p1Set3.setVisibility(View.GONE);
-        TextView p2Set3 = (TextView) findViewById(R.id.p2Set3Points);
-        p2Set3.setVisibility(View.GONE);
+        //Do not show Set 3 boxes for now
+        set3header.setVisibility(View.GONE);
+        p1Set3Points.setVisibility(View.GONE);
+        p2Set3Points.setVisibility(View.GONE);
 
-        TextView set4h = (TextView) findViewById(R.id.set4header);
-        set4h.setVisibility(View.GONE);
-        TextView p1Set4 = (TextView) findViewById(R.id.p1Set4Points);
-        p1Set4.setVisibility(View.GONE);
-        TextView p2Set4 = (TextView) findViewById(R.id.p2Set4Points);
-        p2Set4.setVisibility(View.GONE);
+        //Do not show Set 4 boxes for now
+        set4header.setVisibility(View.GONE);
+        p1Set4Points.setVisibility(View.GONE);
+        p2Set4Points.setVisibility(View.GONE);
 
-        TextView set5h = (TextView) findViewById(R.id.set5header);
-        set5h.setVisibility(View.GONE);
-        TextView p1Set5 = (TextView) findViewById(R.id.p1Set5Points);
-        p1Set5.setVisibility(View.GONE);
-        TextView p2Set5 = (TextView) findViewById(R.id.p2Set5Points);
-        p2Set5.setVisibility(View.GONE);
+        //Do not show Set 5 boxes for now
+        set5header.setVisibility(View.GONE);
+        p1Set5Points.setVisibility(View.GONE);
+        p2Set5Points.setVisibility(View.GONE);
 
         //get player names from shared preferences
         String getPlayer1Name = settings.getString("player1name", "Player 1");
@@ -120,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton(player2.getName(), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Button player1_faultBtn = (Button) findViewById(R.id.player1_fault);
                         player1_faultBtn.setEnabled(false);
                         player1_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
                         player2.setIsServing(true);
@@ -129,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(player1.getName(), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Button player2_faultBtn = (Button) findViewById(R.id.player2_fault);
                         player2_faultBtn.setEnabled(false);
                         player2_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
                         player1.setIsServing(true);
@@ -144,22 +209,20 @@ public class MainActivity extends AppCompatActivity {
      * Identifies which player was currently serving and changes the other player to be the server
      */
     public void serverSwitch() {
-        Button player1Faultbtn = (Button) findViewById(R.id.player1_fault);
-        Button player2Faultbtn = (Button) findViewById(R.id.player2_fault);
         if (player1.isServing()) {
             player2.setIsServing(true);
-            player2Faultbtn.setEnabled(true);
-            player2Faultbtn.setBackgroundColor(getResources().getColor(R.color.color_orange));
+            player2_faultBtn.setEnabled(true);
+            player2_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_orange));
             player1.setIsServing(false);
-            player1Faultbtn.setEnabled(false);
-            player1Faultbtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+            player1_faultBtn.setEnabled(false);
+            player1_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
         } else {
             player1.setIsServing(true);
-            player1Faultbtn.setEnabled(true);
-            player1Faultbtn.setBackgroundColor(getResources().getColor(R.color.color_orange));
+            player1_faultBtn.setEnabled(true);
+            player1_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_orange));
             player2.setIsServing(false);
-            player2Faultbtn.setEnabled(false);
-            player2Faultbtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
+            player2_faultBtn.setEnabled(false);
+            player2_faultBtn.setBackgroundColor(getResources().getColor(R.color.color_grey));
         }
     }
 
@@ -217,10 +280,12 @@ public class MainActivity extends AppCompatActivity {
         updatePlayerScores();
     }
 
+    @OnClick(R.id.player1_pointWin)
     public void player1PointWin(View view) {
         playerPointWin(player1, view);
     }
 
+    @OnClick(R.id.player2_pointWin)
     public void player2PointWin(View view) {
         playerPointWin(player2, view);
     }
@@ -229,17 +294,12 @@ public class MainActivity extends AppCompatActivity {
      * Updates the point scores of the players.
      */
     public void updatePlayerScores() {
-        TextView player1Points_view = (TextView) findViewById(R.id.player1_points);
-        TextView player2Points_view = (TextView) findViewById(R.id.player2_points);
-        TextView p1Points_View = (TextView) findViewById(R.id.p1Points);
-        TextView p2Points_View = (TextView) findViewById(R.id.p2Points);
+        if (player1.getPoints().getPointValue().equals("tb")) {
+            player1Points_view.setText(String.valueOf(player1.getTieBreakerPoints()));
+            player2Points_view.setText(String.valueOf(player2.getTieBreakerPoints()));
 
-        if (player1.getPoints().getPointValue() == "tb") {
-            player1Points_view.setText("" + player1.getTieBreakerPoints());
-            player2Points_view.setText("" + player2.getTieBreakerPoints());
-
-            p1Points_View.setText("" + player1.getTieBreakerPoints());
-            p2Points_View.setText("" + player2.getTieBreakerPoints());
+            p1Points_View.setText(String.valueOf(player1.getTieBreakerPoints()));
+            p2Points_View.setText(String.valueOf(player2.getTieBreakerPoints()));
         } else {
             player1Points_view.setText(player1.getPoints().getPointValue());
             player2Points_view.setText(player2.getPoints().getPointValue());
@@ -252,7 +312,6 @@ public class MainActivity extends AppCompatActivity {
     public void resetFaultCounters() {
         player1.resetFaultCounter();
         player2.resetFaultCounter();
-
     }
 
     /**
@@ -260,18 +319,14 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return current set number
      */
-    public int checkWhatSet() {
-        TextView set2 = (TextView) findViewById(R.id.set2header);
-        TextView set3 = (TextView) findViewById(R.id.set3header);
-        TextView set4 = (TextView) findViewById(R.id.set4header);
-        TextView set5 = (TextView) findViewById(R.id.set5header);
-        if (set5.getVisibility() == View.VISIBLE) {
+    public int checkSetNumber() {
+        if (set5header.getVisibility() == View.VISIBLE) {
             return 5;
-        } else if (set4.getVisibility() == View.VISIBLE) {
+        } else if (set4header.getVisibility() == View.VISIBLE) {
             return 4;
-        } else if (set3.getVisibility() == View.VISIBLE) {
+        } else if (set3header.getVisibility() == View.VISIBLE) {
             return 3;
-        } else if (set2.getVisibility() == View.VISIBLE) {
+        } else if (set2header.getVisibility() == View.VISIBLE) {
             return 2;
         } else {
             return 1;
@@ -285,60 +340,46 @@ public class MainActivity extends AppCompatActivity {
      * @param view   - to make edits to the current screen
      */
     public void playerGameWon(Player player, View view) {
-        TextView player1Points_view = (TextView) findViewById(R.id.player1_points);
         player1Points_view.setText(player1.getPoints().getPointValue());
-        TextView player2Points_view = (TextView) findViewById(R.id.player2_points);
         player1Points_view.setText(player2.getPoints().getPointValue());
 
         player1.setPoints(Player.Point.point_0); //resets points of players
         player2.setPoints(Player.Point.point_0);
 
-        TextView p1Set1 = (TextView) findViewById(R.id.p1Set1Points);
-        TextView p1Set2 = (TextView) findViewById(R.id.p1Set2Points);
-        TextView p1Set3 = (TextView) findViewById(R.id.p1Set3Points);
-        TextView p1Set4 = (TextView) findViewById(R.id.p1Set4Points);
-        TextView p1Set5 = (TextView) findViewById(R.id.p1Set5Points);
-
-        TextView p2Set1 = (TextView) findViewById(R.id.p2Set1Points);
-        TextView p2Set2 = (TextView) findViewById(R.id.p2Set2Points);
-        TextView p2Set3 = (TextView) findViewById(R.id.p2Set3Points);
-        TextView p2Set4 = (TextView) findViewById(R.id.p2Set4Points);
-        TextView p2Set5 = (TextView) findViewById(R.id.p2Set5Points);
-
-        switch (checkWhatSet()) {  //checks what set is currently being played
+        switch (checkSetNumber()) {  //checks what set is currently being played
             case 1:
                 if (player == player1) { //checks which player
-                    p1Set1.setText("" + ++player1Set1Counter); //increments selected player's counter of the current set
+                    p1Set1Points.setText(String.valueOf(++player1Set1Counter)); //increments selected player's counter of the current set
                 } else {
-                    p2Set1.setText("" + ++player2Set1Counter);
+                    p2Set1Points.setText(String.valueOf(++player2Set1Counter));
                 }
                 break;
             case 2:
                 if (player == player1) {
-                    p1Set2.setText("" + ++player1Set2Counter);
+                    p1Set2Points.setText(String.valueOf(++player1Set2Counter));
                 } else {
-                    p2Set2.setText("" + ++player2Set2Counter);
+                    p2Set2Points.setText(String.valueOf(++player2Set2Counter));
                 }
                 break;
             case 3:
                 if (player == player1) {
-                    p1Set3.setText("" + ++player1Set3Counter);
+                    p1Set3Points.setText(String.valueOf(++player1Set3Counter));
                 } else {
-                    p2Set3.setText("" + ++player2Set3Counter);
+                    p2Set3Points.setText(String.valueOf(++player2Set3Counter));
                 }
                 break;
             case 4:
                 if (player == player1) {
-                    p1Set4.setText("" + ++player1Set4Counter);
+                    p1Set4Points.setText(String.valueOf(++player1Set4Counter));
                 } else {
-                    p2Set4.setText("" + ++player2Set4Counter);
+                    p2Set4Points.setText(String.valueOf(++player2Set4Counter));
                 }
                 break;
             case 5:
                 if (player == player1) {
-                    p1Set5.setText("" + ++player1Set5Counter);
+                    p1Set5Points.setText(String.valueOf(++player1Set5Counter));
                 } else {
-                    p2Set5.setText("" + ++player2Set5Counter);
+                    p2Set5Points.setText(String.valueOf(++player2Set5Counter));
                 }
                 break;
             default:
@@ -377,41 +418,29 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        switch (checkWhatSet()) { //identifies current set and makes the textviews of the next set visible
+        switch (checkSetNumber()) { //identifies current set and makes the textviews of the next set visible
             case 1:
-                TextView set2h = (TextView) findViewById(R.id.set2header);
-                set2h.setVisibility(View.VISIBLE);
-                TextView p1Set2 = (TextView) findViewById(R.id.p1Set2Points);
-                p1Set2.setVisibility(View.VISIBLE);
-                TextView p2Set2 = (TextView) findViewById(R.id.p2Set2Points);
-                p2Set2.setVisibility(View.VISIBLE);
+                set2header.setVisibility(View.VISIBLE);
+                p1Set2Points.setVisibility(View.VISIBLE);
+                p2Set2Points.setVisibility(View.VISIBLE);
                 break;
 
             case 2:
-                TextView set3h = (TextView) findViewById(R.id.set3header);
-                set3h.setVisibility(View.VISIBLE);
-                TextView p1Set3 = (TextView) findViewById(R.id.p1Set3Points);
-                p1Set3.setVisibility(View.VISIBLE);
-                TextView p2Set3 = (TextView) findViewById(R.id.p2Set3Points);
-                p2Set3.setVisibility(View.VISIBLE);
+                set3header.setVisibility(View.VISIBLE);
+                p1Set3Points.setVisibility(View.VISIBLE);
+                p2Set3Points.setVisibility(View.VISIBLE);
                 break;
 
             case 3:
-                TextView set4h = (TextView) findViewById(R.id.set4header);
-                set4h.setVisibility(View.VISIBLE);
-                TextView p1Set4 = (TextView) findViewById(R.id.p1Set4Points);
-                p1Set4.setVisibility(View.VISIBLE);
-                TextView p2Set4 = (TextView) findViewById(R.id.p2Set4Points);
-                p2Set4.setVisibility(View.VISIBLE);
+                set4header.setVisibility(View.VISIBLE);
+                p1Set4Points.setVisibility(View.VISIBLE);
+                p2Set4Points.setVisibility(View.VISIBLE);
                 break;
 
             case 4:
-                TextView set5h = (TextView) findViewById(R.id.set5header);
-                set5h.setVisibility(View.VISIBLE);
-                TextView p1Set5 = (TextView) findViewById(R.id.p1Set5Points);
-                p1Set5.setVisibility(View.VISIBLE);
-                TextView p2Set5 = (TextView) findViewById(R.id.p2Set5Points);
-                p2Set5.setVisibility(View.VISIBLE);
+                set5header.setVisibility(View.VISIBLE);
+                p1Set5Points.setVisibility(View.VISIBLE);
+                p2Set5Points.setVisibility(View.VISIBLE);
                 break;
 
             case 5:
@@ -432,10 +461,12 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Player forfeits
      **/
+    @OnClick(R.id.player1_forfeit)
     public void playerOneForfeit(View view) {
         playerForfeit(player1, view);
     }
 
+    @OnClick(R.id.player2_forfeit)
     public void playerTwoForfeit(View view) {
         playerForfeit(player2, view);
     }
@@ -476,6 +507,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view - to make edits to the current screen
      */
+    @OnClick(R.id.remake_game)
     public void remakeGame(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to create a new game?")
@@ -499,6 +531,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view - to make edits to the current screen.
      */
+    @OnClick(R.id.undo_action)
     public void undoAction(View view) {
         //TODO: undo functionality
         Toast toast = Toast.makeText(getApplicationContext(), "Undo functionality currently in progress", Toast.LENGTH_SHORT);
@@ -511,6 +544,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view - to make edits to the current screen
      */
+    @OnClick(R.id.reset_game)
     public void resetGame(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to reset the game?")
@@ -541,10 +575,12 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Player Faults
      */
+    @OnClick(R.id.player1_fault)
     public void player1Fault(View view) {
         playerFault(view, player1);
     }
 
+    @OnClick(R.id.player2_fault)
     public void player2Fault(View view) {
         playerFault(view, player2);
     }
@@ -557,9 +593,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void playerFault(View view, Player player) {
         player.addToFaultCounter();
-
-        final TextView p1Fault = (TextView) findViewById(R.id.p1Fault);
-        final TextView p2Fault = (TextView) findViewById(R.id.p2Fault);
 
         if (player.getFaults() >= 2) {
             if (player == player1) {
@@ -589,9 +622,6 @@ public class MainActivity extends AppCompatActivity {
      * @param text   - player fault text to be displayed
      */
     public void setFaultAnimation(final Player player, final String text) {
-        final TextView p1Fault = (TextView) findViewById(R.id.p1Fault);
-        final TextView p2Fault = (TextView) findViewById(R.id.p2Fault);
-
         //fade out animation
         AlphaAnimation alphaAnim = new AlphaAnimation(1, 0);
         alphaAnim.setStartOffset(500);
@@ -636,29 +666,19 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(), winner.getName() + " has won!!", Toast.LENGTH_SHORT);
         toast.show();
         disableGameplayButtons();
-
     }
 
     /**
      * Disables all gameplay buttons once the match ends
      */
     private void disableGameplayButtons() {
-        Button player1_pointWinBtn = (Button) findViewById(R.id.player1_pointWin);
         buttonDisable(player1_pointWinBtn);
-
-        Button player2_pointWinBtn = (Button) findViewById(R.id.player2_pointWin);
         buttonDisable(player2_pointWinBtn);
 
-        Button player1_faultBtn = (Button) findViewById(R.id.player1_fault);
         buttonDisable(player1_faultBtn);
-
-        Button player2_faultBtn = (Button) findViewById(R.id.player2_fault);
         buttonDisable(player2_faultBtn);
 
-        Button player1_forfeitBtn = (Button) findViewById(R.id.player1_forfeit);
         buttonDisable(player1_forfeitBtn);
-
-        Button player2_forfeitBtn = (Button) findViewById(R.id.player2_forfeit);
         buttonDisable(player2_forfeitBtn);
     }
 
